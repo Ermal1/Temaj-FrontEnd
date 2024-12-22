@@ -27,8 +27,8 @@ const Brands = ({ brandsdata }) => {
     }
   }, [brandsdata.data]);
 
-  const slidesPerView = 4;
-  const totalSlides = 4;
+  const slidesPerView = 5;
+  const totalSlides = 5;
 
   return (
     <div className="hero-wrapper">
@@ -66,22 +66,39 @@ const Brands = ({ brandsdata }) => {
           }}
         >
           {brands.map((el, index) => (
-            <SwiperSlide id="swipeslides" key={el.id || index}>
+            <SwiperSlide
+              id="swipeslides"
+              key={el.id || index}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <div
-                className="brand-card"
                 style={{
-                  backgroundImage: `url(${el.brand_photo})`,
-                  cursor: "pointer",
+                  height: "150px",
+                  width: "150px",
+                  backgroundColor: "#fff",
+                  borderRadius: "50px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: 'pointer'
                 }}
                 onClick={() => navigate(`/products?brand=${el.brand_name}`)}
               >
-                <div className="logo" style={{
-                  marginBottom: '20px'
-                }}>
-                  <img style={{
-                    borderRadius: '50px'
-                  }} src={el.brand_logo} alt="logo" />
-                </div>
+                <img
+                  style={{
+                    objectFit: "contain",
+                    objectPosition: "center",
+                    height: "80%",
+                    width: "80%",
+                    borderRadius: "50px",
+                  }}
+                  src={el.brand_logo}
+                  alt="logo"
+                />
               </div>
             </SwiperSlide>
           ))}
